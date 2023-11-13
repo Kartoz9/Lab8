@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Галерея зображень</title>
+    <style>
+        .image {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .active {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Галерея зображень</h1>
+    <div class="gallery">
+        <img src="1.png" class="image" onclick="toggleImage(this)">
+        <img src="2.png" class="image" onclick="toggleImage(this)">
+        <img src="3.png" class="image" onclick="toggleImage(this)">
+    </div>
+
+    <script>
+        function toggleImage(image) {
+            if (image.classList.contains("active")) {
+                image.classList.remove("active");
+            } else {
+                image.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>

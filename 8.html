@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Зміна розміру картинки</title>
+</head>
+<body>
+    <h1>Зміна розміру картинки</h1>
+    <img id="image" src="1.png" width="200" height="200">
+    <button id="resizeButton" onclick="changeImageSize()">Змінити розмір</button>
+
+    <script>
+        const image = document.getElementById("image");
+        const resizeButton = document.getElementById("resizeButton");
+        let isResized = false;
+
+        function changeImageSize() {
+            isResized = !isResized;
+
+            if (isResized) {
+                image.style.width = (image.width * 2) + "px";
+                image.style.height = (image.height * 2) + "px";
+            } else {
+                image.style.width = "200px"; 
+                image.style.height = "200px";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Гра на перевірку знання таблиці множення</title>
+</head>
+<body>
+    <h1>Гра на перевірку знання таблиці множення</h1>
+    <p id="question">Питання тут</p>
+    <form id="quizForm">
+        <input type="radio" name="answer" value="1" id="option1"> <label for="option1" id="label1">Відповідь 1</label><br>
+        <input type="radio" name="answer" value="2" id="option2"> <label for="option2" id="label2">Відповідь 2</label><br>
+        <input type="radio" name="answer" value="3" id="option3"> <label for="option3" id="label3">Відповідь 3</label><br>
+        <input type="radio" name="answer" value="4" id="option4"> <label for="option4" id="label4">Відповідь 4</label><br>
+        <button type="button" onclick="checkAnswer()">Перевірити</button>
+    </form>
+    <p id="result"></p>
+
+    <button type="button" onclick="nextQuestion()">Наступне завдання</button>
+
+    <script >
+    const questions = [
+        { question: "2 x 2 =", options: ["3", "4", "5", "6"], correctAnswer: 1 },
+        { question: "3 x 5 =", options: ["10", "12", "15", "18"], correctAnswer: 2 },
+        { question: "7 x 8 =", options: ["48", "56", "64", "72"], correctAnswer: 1 },
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function displayQuestion() {
+        const questionElement = document.getElementById("question");
+        const labelElements = [1, 2, 3, 4].map(i => document.getElementById(`label${i}`));
+
+        if (currentQuestion < questions.length) {
+            questionElement.textContent = questions[currentQuestion].question;
+            questions[currentQuestion].options.forEach((option, i) => {
+                labelElements[i].textContent = option;
+            });
+        } else {
+            questionElement.textContent = "Гра завершена. Ваш результат: " + score + " з " + questions.length;
+            labelElements.forEach(label => {
+                label.style.display = "none";
+            });
+            document.getElementById("quizForm").style.display = "none";
+        }
+    }
+
+    function checkAnswer() {
+        const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+
+        if (selectedAnswer) {
+            const userAnswer = parseInt(selectedAnswer.value);
+
+            if (userAnswer === questions[currentQuestion].correctAnswer) {
+                score++;
+            }
+
+            currentQuestion++;
+            displayQuestion();
+
+            document.getElementById("result").textContent = "Ваш результат: " + score + " з " + currentQuestion;
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < questions.length) {
+            displayQuestion();
+            document.getElementById("result").textContent = "";
+            document.getElementById("quizForm").reset();
+        }
+    }
+
+    displayQuestion();
+
+    </script>
+</body>
+</html>

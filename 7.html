@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Змінювання розміру та кута блока</title>
+    <style>
+        .block {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px;
+            transform: rotate(0deg);
+        }
+
+        .active {
+            border: 2px solid #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Змінювання розміру та кута блока</h1>
+    <div class="block" id="resizeBlock"></div>
+    <button onclick="resizeBlock()">Змінити розмір</button>
+    <button onclick="rotateBlock()">Повернути</button>
+
+    <script>
+        const block = document.getElementById("resizeBlock");
+        let isResized = false;
+
+        function resizeBlock() {
+            isResized = !isResized;
+            block.style.width = isResized ? "200px" : "100px";
+            block.style.height = isResized ? "200px" : "100px";
+            block.classList.add("active");
+        }
+
+        let rotationAngle = 0;
+
+        function rotateBlock() {
+            rotationAngle += 45;
+            block.style.transform = `rotate(${rotationAngle}deg)`;
+        }
+    </script>
+</body>
+</html>

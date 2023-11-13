@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вибрані електронні адреси</title>
+</head>
+<body>
+    <input type="checkbox" class="email-checkbox" value="email1@example.com"> email1@example.com<br>
+    <input type="checkbox" class="email-checkbox" value="email2@example.com"> email2@example.com<br>
+    <input type="checkbox" class="email-checkbox" value="email3@example.com"> email3@example.com<br>
+    
+    <div id="selected-emails"></div>
+    
+    <script>
+        const emailCheckboxes = document.querySelectorAll('.email-checkbox');
+        const selectedEmailsContainer = document.getElementById('selected-emails');
+        
+        emailCheckboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const selectedEmails = Array.from(emailCheckboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+                selectedEmailsContainer.textContent = selectedEmails.join(', ');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма з активними секціями</title>
+    <style>
+        .section {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .active {
+            border-color: blue;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Форма з активними секціями</h1>
+    <form>
+        <div class="section">
+            <h2>Секція 1</h2>
+            <label for="input1">Поле 1:</label>
+            <input type="text" id="input1">
+        </div>
+        <div class="section">
+            <h2>Секція 2</h2>
+            <label for="input2">Поле 2:</label>
+            <input type="text" id="input2">
+        </div>
+    </form>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const inputs = document.querySelectorAll('input[type="text"]');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('focus', () => {
+                sections.forEach((section, i) => {
+                    if (i === index) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

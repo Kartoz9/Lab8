@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вибрані чекбокси</title>
+</head>
+<body>
+    <label><input type="checkbox" class="checkbox" value="Пункт 1"> Пункт 1</label><br>
+    <label><input type="checkbox" class="checkbox" value="Пункт 2"> Пункт 2</label><br>
+    <label><input type="checkbox" class="checkbox" value="Пункт 3"> Пункт 3</label><br>
+    <button onclick="showSelectedValues()">Вивести вибрані</button>
+    <p id="result"></p>
+
+    <script>
+        function showSelectedValues() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const selectedValues = [];
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    selectedValues.push(checkbox.value);
+                }
+            });
+
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = "Вибрані елементи: " + selectedValues.join(", ");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Замовлення товарів</title>
+</head>
+<body>
+    <h1>Список товарів</h1>
+    <ul id="productList">
+        <li>Товар 1 <button onclick="addToCart('Товар 1')">Замовити</button></li>
+        <li>Товар 2 <button onclick="addToCart('Товар 2')">Замовити</button></li>
+        <li>Товар 3 <button onclick="addToCart('Товар 3')">Замовити</button></li>
+    </ul>
+
+    <h1>Кошик</h1>
+    <ul id="cart"></ul>
+
+    <script>
+        function addToCart(productName) {
+            const cart = document.getElementById("cart");
+            const listItem = document.createElement("li");
+            listItem.textContent = productName;
+            cart.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
